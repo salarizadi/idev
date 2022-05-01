@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iDev</title>
+
+    <script src="idev.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            font-family: system-ui;
+            text-align: center;
+        }
+        body, html {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 12px;
+            height: 100%;
+            width: 100%;
+        }
+        .border {
+            border: 2px dashed #686868;
+            width: 700px;
+            height: 350px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 12px;
+        }
+        ul {
+            list-style: none;
+        }
+        ul li {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="border">
+    <h1 class="status">Closed</h1>
+
+    <h5 class="agent"></h5>
+
+    <ul>
+        <li class="ismobile"></li>
+        <li class="iswindows"></li>
+        <li class="ismac"></li>
+    </ul>
+</div>
+
+<script>
+    document.querySelector(".agent").innerHTML  = navigator.userAgent;
+
+    iDev.listener(function (opened) {
+        document.querySelector(".status").innerHTML = (opened ? "Opened" : "Closed");
+    });
+
+    document.querySelector(".ismobile").innerHTML  = "Mobile  : " + (iDev.mobile ? "true" : "false");
+    document.querySelector(".iswindows").innerHTML = "Windows : " + (iDev.windows ? "true" : "false");
+    document.querySelector(".ismac").innerHTML     = "Mac : " + (iDev.mac ? "true" : "false");
+
+    iDev.run();
+</script>
+
+</body>
+</html>
+
+
